@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+ <!-- run as , maven bulid ,弹出对话框,在goals中输入mybatis-generator:generate -->
+<generatorConfiguration>
+    <!--数据库驱动路径，本地mysql启动jar的路径-->
+    <classPathEntry location="D:\software\java\meaven\M2\repository\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar" />
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+ 
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+ 
+        <!-- jdbc链接信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/springdata?characterEncoding=utf-8"
+                        userId="root" password="root">
+        </jdbcConnection>
+ 
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+ 
+        <!-- 生成PO类的位置 -->
+        <javaModelGenerator targetPackage="org.com.liurz.iresources.servcie.entity"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+ 
+        <!-- mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="mapping"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+ 
+        <!-- mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="org.com.liurz.iresources.servcie.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+ 
+        <!-- 指定要生成的表 -->
+        <table tableName="t_user" domainObjectName="UserVO"
+               enableCountByExample="false"
+               anableUpdateByExample="false"
+               anableDeleteByExample="false"
+               anableSelectByExample="false"
+               selectByExampleQueryId="false">
+             <!--生成model的字段设置，true表示用本身的字段，false表示将表的字段下划线换成驼峰形式  -->
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+ 
+    </context>
+</generatorConfiguration>

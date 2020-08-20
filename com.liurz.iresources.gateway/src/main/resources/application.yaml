@@ -1,0 +1,27 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8769
+
+spring:
+  application:
+    name: gatewayCloud
+#漏由规则
+zuul: 
+  routes:
+    eureka-web: /iresourcesCloud/v1/**    采用服务名
+
+mongodb:
+       ip:localhost
+       port:27017
+       databasename:liurz
+       
+redis:
+     ip:localhost
+     port:6379
+
+      
+
+

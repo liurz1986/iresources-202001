@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- com.liurz.mapper.mapping.FileMapper就是接口，主要下面sql对应的接口方法 -->
+<mapper namespace="org.com.liurz.iresources.servcie.mapper.RoleMapper">
+	<!--resultMap配置了数据库表和实体进行映射(主要是防止实体类属性名和数据表列明不相同，相同不用配置)，主要是为了返回list实体类对象或实体类对象  -->
+	<resultMap id="RoleResultMap" type="org.com.liurz.iresources.servcie.entity.Role">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+        <result property="description" column="description" />
+	</resultMap>
+	
+	<insert id="saveRole">
+	    <!-- 配置插入数据操作后，获取插入数据的id,currentId表示返回id的字段名-->
+	    <selectKey keyProperty="currentId" keyColumn="id" resultType="int" order="AFTER">
+	      select last_insert_id();
+	    </selectKey>
+		insert into t_role(name,description,create_time,update_time) values
+		(#{name},#{description},sysdate(),sysdate());
+	</insert>
+	
+	<!-- collection的值为list或map，代表list集合或map集合 -->
+	<insert id="batchSaveRole" parameterType="ArrayList">
+		insert into t_role(name,description) values
+		<foreach collection="list" item="role" separator=",">
+			(#{role.fileName},#{role.description})
+		</foreach>
+	</insert>
+
+
+	<select id="findAll" resultType="java.util.Map">
+		select * from t_role
+	</select>
+    
+    <select id="findaById" resultType="java.util.Map">
+		select * from t_role where id=#{0}
+	</select>
+	
+	<select id="getRoleName" resultType="String">
+	   select a.`name` from t_role a 
+	   left join t_user_role_relation  b on a.id=b.role_id
+       left join t_user c on c.id=b.user_id where c.`name`=#{0}
+	</select>
+
+	<delete id="deleteAll">
+     delete from  t_role
+	</delete>
+     <select id="test" resultType="map">
+     select * from t_role where 1=1
+     <if test="ids!= null and ids.size >0">
+        and id in
+       <foreach collection="ids" item="id" open="(" close=")" separator="," index="index">
+         #{id}
+       </foreach>
+     </if>
+     <if test="names!= null and names.size >0">
+        and name in
+       <foreach collection="names" item="name" open="(" close=")" separator="," index="index">
+         #{name}
+       </foreach>
+     </if>
+     </select>
+</mapper>

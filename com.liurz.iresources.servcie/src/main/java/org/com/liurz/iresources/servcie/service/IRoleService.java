@@ -24,7 +24,7 @@ public interface IRoleService {
 	/**
 	 * 查询所有数据
 	 * 
-	 * @return list list
+	 * @return list listdata
 	 */
 	public List<Map<String, Object>> findAll();
 

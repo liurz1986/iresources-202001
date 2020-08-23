@@ -176,6 +176,7 @@
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
 			<version>1.2.5</version>
 		</dependency>
+		
 		<!-- mabatis插件生成mapper和实体类 -->
 		<dependency>
 			<groupId>org.mybatis.generator</groupId>

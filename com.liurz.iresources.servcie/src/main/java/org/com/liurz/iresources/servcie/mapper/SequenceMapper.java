@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface SequenceMapper {
 
-    long getNextSquenceId(@Param("tableName")String tableName);
+	long getNextSquenceId(@Param("tableName") String tableName);
 
-    long setTableSquenceId(@Param("tableName")String tableName,@Param("size")int size);
+	long setTableSquenceId(@Param("tableName") String tableName, @Param("size") int size);
 }

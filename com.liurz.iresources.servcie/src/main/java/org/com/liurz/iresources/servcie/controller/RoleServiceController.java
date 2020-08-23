@@ -54,20 +54,15 @@ public class RoleServiceController {
 		return result;
 	}
 
-	// http://localhost:8080/ssm/rest/v1/role/findAll
+	// http://localhost:8080/service/rest/v1/role/findAll/1/2
 	@Author(value = UserRole.ALLUSER)
-	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
-	public Map<String, Object> findAll() {
-		Map<String, Object> result = new HashMap<String, Object>();
+	@RequestMapping(value = "/findAll/{pageNum}/{pageSize}", method = RequestMethod.GET)
+	public ResponseVO findAll(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize) {
 		try {
-			List<Map<String, Object>> data = roleService.findAll();
-			result.put("data", data);
-			result.put("status", "success");
+			return roleService.findAll(pageNum, pageSize);
 		} catch (Exception e) {
-			result.put("data", e.getMessage());
-			result.put("status", "error");
+			return ResponseVO.errorResult(e.getMessage());
 		}
-		return result;
 	}
 
 	// @Author(value = UserRole.ALLUSER)

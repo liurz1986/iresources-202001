@@ -3,6 +3,7 @@ package org.com.liurz.iresources.servcie.service;
 import java.util.List;
 import java.util.Map;
 
+import org.com.liurz.iresources.servcie.controller.ResponseVO;
 import org.com.liurz.iresources.servcie.entity.UserVO;
 
 public interface IRoleService {
@@ -10,14 +11,16 @@ public interface IRoleService {
 	/**
 	 * 保存
 	 * 
-	 * @param role role
+	 * @param role
+	 *            role
 	 */
 	public void saveRole(Map<String, Object> role) throws InterruptedException;
 
 	/**
 	 * 批量保存
 	 * 
-	 * @param roles roles
+	 * @param roles
+	 *            roles
 	 */
 	public void batchSaveRole(List<Map<String, Object>> roles);
 
@@ -26,7 +29,7 @@ public interface IRoleService {
 	 * 
 	 * @return list list
 	 */
-	public List<Map<String, Object>> findAll();
+	public ResponseVO findAll(int pageNum, int pageSize);
 
 	/**
 	 * 通过id获取角色对象

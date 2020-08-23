@@ -8,7 +8,7 @@
 		select  nextval(#{tableName})
 	</select>
     
-    <select id="setTableSquenceId" resultType="java.util.Map">
+    <select id="setTableSquenceId" resultType="long">
 		select setvallist(#{tableName},#{size});
 	</select>
 </mapper>

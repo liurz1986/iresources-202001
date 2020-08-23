@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import org.com.liurz.iresources.servcie.controller.ResponseVO;
 import org.com.liurz.iresources.servcie.entity.UserVO;
 import org.com.liurz.iresources.servcie.mapper.RoleMapper;
 import org.com.liurz.iresources.servcie.service.IRoleService;
@@ -16,6 +17,9 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 /**
  *
@@ -78,9 +82,14 @@ public class RoleService implements IRoleService {
 		}
 	}
 
-	public List<Map<String, Object>> findAll() {
-		// TODO Auto-generated method stub
-		return roleMapper.findAll();
+	public ResponseVO findAll(int pageNum, int pageSize) {
+		ResponseVO responseVO = ResponseVO.create();
+		PageHelper.startPage(pageNum, pageSize);
+		List<Map<String, Object>> userList = roleMapper.findAll();
+		PageInfo<Map<String, Object>> pageInfo = new PageInfo<Map<String, Object>>(userList);
+		responseVO.setPageInfo(pageInfo);
+		responseVO.setItems(userList);
+		return responseVO;
 	}
 
 	public Map<String, Object> findaById(int id) {
@@ -105,4 +114,5 @@ public class RoleService implements IRoleService {
 
 		return null;
 	}
+
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- com.liurz.mapper.mapping.FileMapper就是接口，主要下面sql对应的接口方法 -->
+<mapper namespace="org.com.liurz.iresources.servcie.mapper.SequenceMapper">
+
+
+	<select id="getNextSquenceId" resultType="long">
+		select  nextval(#{tableName})
+	</select>
+    
+    <select id="setTableSquenceId" resultType="java.util.Map">
+		select setvallist(#{tableName},#{size});
+	</select>
+</mapper>

@@ -43,4 +43,6 @@ public interface IRoleService {
 
 	public UserVO getUser(int id);
 
+	public int copyData(String remark);
+
 }

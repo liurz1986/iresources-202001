@@ -1,5 +1,6 @@
 package org.com.liurz.iresources.servcie.test;
 
+import org.com.liurz.iresources.servcie.mapper.RoleMapper;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,9 +22,12 @@ public class JasyptTest {
 	@Autowired
 	StringEncryptor stringEncryptor;
 
+	@Autowired
+	RoleMapper roleMapper;
+
 	@Test
 	public void test() {
-		System.out.println(stringEncryptor.encrypt("root"));
+		roleMapper.copyData("zhujie");
 	}
 
 }

@@ -59,4 +59,11 @@
        </foreach>
      </if>
      </select>
+
+	<insert id="copyData">
+		insert into t_role_copy(name,create_time,update_time,created_by,description)
+		select name,SYSDATE() as create_time,SYSDATE() as update_time,'1222' created_by ,#{remark} as description
+		from t_role
+
+	</insert>
 </mapper>

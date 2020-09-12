@@ -94,7 +94,8 @@ public class RoleServiceController {
 	}
 
 	@RequestMapping("/test3")
-	public UserVO test3(int id) {
-		return roleService.getUser(id);
+	public int test3(String remark) {
+
+		return roleService.copyData(remark);
 	}
 }

@@ -21,10 +21,10 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 // import org.springframework.cloud.context.config.annotation.RefreshScope;
 
-//@EnableEurekaClient
+@EnableEurekaClient
 @MapperScan("org.com.liurz.iresources.servcie.mapper")
 @SpringBootApplication
 // @RefreshScope // 配置文件更新配置，可以手动刷新配置

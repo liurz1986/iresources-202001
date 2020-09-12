@@ -1,6 +1,6 @@
 package org.com.liurz.iresources.servcie.config;
 
-import org.com.liurz.iresources.core.util.SpringBeanUtil;
+//import org.com.liurz.iresources.core.util.SpringBeanUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -21,7 +21,7 @@ public class SpringContextUtil implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         LOGGER.info("=============项目加载中,加载上下文，请稍等====================");
-        SpringBeanUtil.applicationContext = applicationContext;
+        //SpringBeanUtil.applicationContext = applicationContext;
         LOGGER.info("=============加載上下文完成，" ,applicationContext);
 
     }

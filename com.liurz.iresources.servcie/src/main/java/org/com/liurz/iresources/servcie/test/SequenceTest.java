@@ -14,8 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @date 2020/8/17 20:13
  * @Copyright © 2020-2028
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 public class SequenceTest {
 
 	@Autowired

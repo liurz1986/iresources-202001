@@ -114,5 +114,7 @@ public class RoleService implements IRoleService {
 
 		return null;
 	}
-
+	public int copyData(String remark){
+		return roleMapper.copyData(remark);
+	}
 }

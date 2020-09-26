@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,10 +22,11 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+// import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 // import org.springframework.cloud.context.config.annotation.RefreshScope;
 
-@EnableEurekaClient
+//@EnableDiscoveryClient
+//@EnableEurekaClient
 @MapperScan("org.com.liurz.iresources.servcie.mapper")
 @SpringBootApplication
 // @RefreshScope // 配置文件更新配置，可以手动刷新配置

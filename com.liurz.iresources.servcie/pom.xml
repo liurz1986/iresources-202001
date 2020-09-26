@@ -28,13 +28,22 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- eureka 客户端 -->
-        <dependency>
+      <!--  <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            </dependency>
+        </dependency>-->
+
+        <!-- SpringBootText注解依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- Junit依赖 -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
         <!-- springboot邮件发送，封装了javax.mail,也会下载javax.mail的jar -->
         <dependency>
@@ -137,12 +146,12 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>4.0.1</version>
+            <version>3.9</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>4.0.1</version>
+            <version>3.9</version>
         </dependency>
         <!--AOP -->
         <dependency>
@@ -172,12 +181,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!-- 分页插件 -->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>1.2.5</version>
-        </dependency>
 
         <!-- mabatis插件生成mapper和实体类 -->
         <dependency>
@@ -189,6 +192,10 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
         <!--加载core包 -->
         <dependency>

@@ -3,8 +3,9 @@ package org.com.liurz.iresources.servcie.service;
 import java.util.List;
 import java.util.Map;
 
-import org.com.liurz.iresources.servcie.controller.ResponseVO;
+import org.com.liurz.iresources.core.util.ResponseVO;
 import org.com.liurz.iresources.servcie.entity.UserVO;
+
 
 public interface IRoleService {
 

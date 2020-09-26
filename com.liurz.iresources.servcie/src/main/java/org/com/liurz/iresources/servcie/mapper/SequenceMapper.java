@@ -1,5 +1,6 @@
 package org.com.liurz.iresources.servcie.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -9,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
  * @date 2020/8/20 23:03
  * @Copyright © 2020-2028
  */
+
 public interface SequenceMapper {
 
 	long getNextSquenceId(@Param("tableName") String tableName);

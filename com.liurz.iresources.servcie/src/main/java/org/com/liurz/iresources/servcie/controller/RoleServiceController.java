@@ -1,19 +1,26 @@
 package org.com.liurz.iresources.servcie.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+import org.com.liurz.iresources.core.util.ResponseVO;
 import org.com.liurz.iresources.servcie.annocation.Author;
 import org.com.liurz.iresources.servcie.entity.UserVO;
 import org.com.liurz.iresources.servcie.service.IRoleService;
 import org.com.liurz.iresources.servcie.util.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/rest/v1/role")
@@ -80,22 +87,48 @@ public class RoleServiceController {
 		return result;
 	}
 
-	@RequestMapping(value = "/demoMsg", method = RequestMethod.GET)
-	public Map<String, Object> Demo() {
-		Map<String, Object> result = new HashMap<String, Object>();
-		try {
-			result.put("data", "demo message");
-			result.put("status", "success");
-		} catch (Exception e) {
-			result.put("data", e.getMessage());
-			result.put("status", "error");
-		}
-		return result;
-	}
-
 	@RequestMapping("/test3")
 	public int test3(String remark) {
 
 		return roleService.copyData(remark);
+	}
+	@RequestMapping("/test4")
+	public int test4() {
+
+		roleService.test();
+		return 1;
+	}
+	@RequestMapping("/test5")
+	public UserVO test5() {
+
+		return roleService.getUser(1);
+	}
+
+	/**
+	 * 文件上传
+	 *
+	 * @param file
+	 * @return
+	 */
+	@PostMapping("/upload")
+	public ResponseVO upload(@RequestParam("file") MultipartFile file){
+		ResponseVO response = ResponseVO.create();
+		if (file.isEmpty()) {
+			return ResponseVO.errorResult("上传失败，请选择文件");
+		}
+		double size = (double)(file.getSize()/1024/1024);
+		if(size > 10){
+			return ResponseVO.errorResult("文件超过10M");
+		}
+		String fileName = file.getOriginalFilename();
+		String filePath = "D://workspace/temp/";
+		File dest = new File(filePath + fileName);
+		try {
+			file.transferTo(dest);
+			response.setMessage("上传成功");
+			return response;
+		} catch (IOException e) {
+			return ResponseVO.errorResult(e.getMessage());
+		}
 	}
 }

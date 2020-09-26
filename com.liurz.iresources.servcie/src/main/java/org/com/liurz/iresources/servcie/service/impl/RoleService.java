@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.com.liurz.iresources.servcie.controller.ResponseVO;
+import org.com.liurz.iresources.core.util.ResponseVO;
 import org.com.liurz.iresources.servcie.entity.UserVO;
 import org.com.liurz.iresources.servcie.mapper.RoleMapper;
 import org.com.liurz.iresources.servcie.service.IRoleService;
